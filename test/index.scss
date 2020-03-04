@@ -8,19 +8,23 @@
 
 @use 'true';
 @use 'src' with ($config: (
-  size: (
-    header: (
-      width: 100%,
-      height: 200px
-    )
-  ),
-  color: (
-    text: #ddd,
-    background: (
-      &: #222,
-      light: #fff
-    )
-  )
+	size: (
+		header: (
+			width: 100%,
+			height: 200px
+		)
+	),
+	color: (
+		text: #ddd,
+		background: (
+			&: #222,
+			light: #fff
+		),
+		accent: (
+			red: #f00,
+			orange: #fc0
+		)
+	)
 ));
 
 
@@ -38,4 +42,8 @@
 
 @include true.describe("@import 'functions/get'") {
 	@import 'functions/get';
+}
+
+@include true.describe("@import 'functions/helpers'") {
+	@import 'functions/helpers';
 }

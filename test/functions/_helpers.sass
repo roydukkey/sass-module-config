@@ -1,0 +1,35 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group tests
+////
+
+@use 'src/functions/helpers'
+@use 'true'
+
+
+@include true.describe('@function helpers.color')
+
+	@include true.it('Get a map of colors from the configuration')
+		$assert: helpers.color(accent)
+		$expected: (red: #f00, orange: #fc0)
+		@include true.assert-equal($assert, $expected)
+
+	@include true.it('Get a color from the configuration')
+		$assert: helpers.color(accent red)
+		$expected: #f00
+		@include true.assert-equal($assert, $expected)
+
+
+@include true.describe('@function helpers.size')
+
+	@include true.it('Get a map of sizes from the configuration')
+		$assert: helpers.size(header)
+		$expected: (width: 100%, height: 200px)
+		@include true.assert-equal($assert, $expected)
+
+	@include true.it('Get a size from the configuration')
+		$assert: helpers.size(header height)
+		$expected: 200px
+		@include true.assert-equal($assert, $expected)
