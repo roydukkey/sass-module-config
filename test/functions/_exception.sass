@@ -26,5 +26,5 @@
 @include true.describe('@function exception.helper-type-error')
 	@include true.it('Correctly creates message')
 		$asset: exception.helper-type-error('color', ('key1' key2))
-		$expected: 'No color was found for `color("key1" key2)`'
+		$expected: 'No color or color map was found for `color("key1" key2)`'
 		@include true.assert-equal($asset, $expected)

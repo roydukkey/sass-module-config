@@ -12,13 +12,13 @@
 
 
 ///
-/// Gets a configured color by the specified names.
+/// Gets a configured color or color map by the specified names.
 ///
 /// @param {String | List} $names - A list of configuration names that indicate the color to be selected.
-/// @return {Color}
+/// @return {Color | Map}
 ///
 /// @throw The configuration for `color(#{$names})` has not been defined
-/// @throw No color was found for `color(#{$names})`
+/// @throw No color or color map was found for `color(#{$names})`
 ///
 /// @access public
 /// @require exception.helper-type-error
@@ -32,20 +32,20 @@
 	@if $color == null
 		@error exception.undefined-config('color', $names)
 
-	@if meta.type-of($color) != 'color'
+	@if meta.type-of($color) != 'color' and meta.type-of($color) != 'map'
 		@error exception.helper-type-error('color', $names)
 
 	@return $color
 
 
 ///
-/// Gets a configured size by the specified names.
+/// Gets a configured size or size map by the specified names.
 ///
 /// @param {String | List} $names - A list of configuration names that indicate the size to be selected.
-/// @return {Number}
+/// @return {Number | Map}
 ///
 /// @throw The configuration for `size(#{$names})` has not been defined
-/// @throw No size was found for `size(#{$names})`
+/// @throw No size or size map was found for `size(#{$names})`
 ///
 /// @access public
 /// @require exception.helper-type-error
@@ -59,7 +59,7 @@
 	@if $size == null
 		@error exception.undefined-config('size', $names)
 
-	@if meta.type-of($size) != 'number'
+	@if meta.type-of($size) != 'number' and meta.type-of($size) != 'map'
 		@error exception.helper-type-error('size', $names)
 
 	@return $size
