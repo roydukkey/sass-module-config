@@ -25,7 +25,7 @@ Depending on your setup, you may need to use the module by its full path:
 
 ## One Setting
 
-`$config` (Map), defaults to an empty list.
+`$config` (Map), defaults to an empty map.
 
 - A map which is expected to be configured when using the module.
 - The map many contain values of any type, including other maps.

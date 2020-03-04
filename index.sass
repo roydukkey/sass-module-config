@@ -5,6 +5,9 @@
 /// @group api
 ////
 
+@use 'sass:map'
+
+
 ///
 /// A map which is expected to be configured when using the module.
 ///
@@ -12,7 +15,7 @@
 ///
 /// @access public
 ///
-$config: () !default
+$config: map.merge((), ()) !default
 
 
 @forward 'src' with ($config: $config)

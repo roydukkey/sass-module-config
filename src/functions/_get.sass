@@ -7,6 +7,7 @@
 
 @use 'exception'
 @use 'map'
+@use 'sass:map' as sass-map
 
 
 ///
@@ -16,7 +17,7 @@
 ///
 /// @access public
 ///
-$config: () !default
+$config: sass-map.merge((), ()) !default
 
 
 ///
