@@ -77,14 +77,9 @@ body {
 
 Gets a configured value by the specified names.
 
-<dl>
-  <dt><code>@param {String | List} $names</code></dt>
-  <dd>A list of configuration names that indicate the value to be selected.</dd>
-  <dt><code>@return {*}</code></dt>
-  <dd>The configured value.</dd>
-  <dt><code>@throw</code></dt>
-  <dd>The configuration for `get(#{$names})` has not been defined.</dd>
-</dl>
+`@param {String | List} $names` - A list of configuration names that indicate the value to be selected.<br>
+`@return {*}` - The configured value.<br>
+`@throw` - The configuration for \`get(#{$names})\` has not been defined.
 
 ### Helpers
 
@@ -94,31 +89,19 @@ Two helpers have been provided to improve type checking and organisation of colo
 
 Gets a configured color or color map by the specified names.
 
-<dl>
-  <dt><code>@param {String | List} $names</code></dt>
-  <dd>A list of configuration names that indicate the color to be selected.</dd>
-  <dt><code>@return {Color | Map}</code></dt>
-  <dd>The configured color.</dd>
-  <dt><code>@throw</code></dt>
-  <dd>The configuration for `color(#{$names})` has not been defined.</dd>
-  <dt><code>@throw</code></dt>
-  <dd>No color or color map was found for `color(#{$names})`.</dd>
-</dl>
+`@param {String | List} $names` - A list of configuration names that indicate the color to be selected.<br>
+`@return {Color | Map}` - The configured color.<br>
+`@throw` - The configuration for \`color(#{$names})\` has not been defined.<br>
+`@throw` - No color or color map was found for \`color(#{$names})\`.
 
 #### `@function size($names)`
 
 Gets a configured size or size map by the specified names.
 
-<dl>
-  <dt><code>@param {String | List} $names</code></dt>
-  <dd>A list of configuration names that indicate the size to be selected.</dd>
-  <dt><code>@return {Number | Map}</code></dt>
-  <dd>The configured size.</dd>
-  <dt><code>@throw</code></dt>
-  <dd>The configuration for `size(#{$names})` has not been defined.</dd>
-  <dt><code>@throw</code></dt>
-  <dd>No size or size map was found for `size(#{$names})`.</dd>
-</dl>
+`@param {String | List} $names` - A list of configuration names that indicate the size to be selected.<br>
+`@return {Number | Map}` - The configured size.<br>
+`@throw` - The configuration for \`size(#{$names})\` has not been defined.<br>
+`@throw` - No size or size map was found for \`size(#{$names})\`.
 
 ## Example with Helpers
 
