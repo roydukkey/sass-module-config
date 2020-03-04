@@ -5,6 +5,6 @@ const path = require('path');
 const sass = require('sass');
 const sassTrue = require('sass-true');
 
-const file = path.join(__dirname, 'index.sass');
+const file = path.join(__dirname, 'index.scss');
 
 sassTrue.runSass({ file }, { sass, describe, it });

@@ -1,0 +1,41 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group tests
+/// @deprecated This file uses the bracket syntax until multi-line maps are supported. @link http://github.com/sass/sass/issues/216
+////
+
+@use 'true';
+@use 'src' with ($config: (
+  size: (
+    header: (
+      width: 100%,
+      height: 200px
+    )
+  ),
+  color: (
+    text: #ddd,
+    background: (
+      &: #222,
+      light: #fff
+    )
+  )
+));
+
+
+@include true.describe("@import 'functions/exception'") {
+	@import 'functions/exception';
+}
+
+@include true.describe("@import 'functions/list'") {
+	@import 'functions/list';
+}
+
+@include true.describe("@import 'functions/map'") {
+	@import 'functions/map';
+}
+
+@include true.describe("@import 'functions/get'") {
+	@import 'functions/get';
+}
