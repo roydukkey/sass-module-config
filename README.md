@@ -1,5 +1,8 @@
 # sass-module-config
 
+[![Release Version](https://img.shields.io/npm/v/sass-module-config.svg)](https://www.npmjs.com/package/sass-module-config)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+
 This Sass module is for defining immutable configuration singletons.
 
 ## Install
