@@ -7,7 +7,7 @@ This Sass module is for defining immutable configuration singletons.
 Install the package:
 
 ```bash
-npm install sass-true
+npm install sass-module-config
 ```
 
 Use the package like any other Sass module:
