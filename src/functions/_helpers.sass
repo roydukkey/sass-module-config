@@ -1,0 +1,65 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api-helpers
+////
+
+@use 'exception'
+@use 'get'
+@use 'list'
+@use 'sass:meta'
+
+
+///
+/// Gets a configured color by the specified names.
+///
+/// @param {String | List} $names - A list of configuration names that indicate the color to be selected.
+/// @return {Color}
+///
+/// @throw The configuration for `color(#{$names})` has not been defined
+/// @throw No color was found for `color(#{$names})`
+///
+/// @access public
+/// @require exception.helper-type-error
+/// @require exception.undefined-config
+/// @require get.internal_get
+/// @require list.prepend
+///
+@function color($names)
+	$color: get.internal_get(list.prepend($names, 'color'))
+
+	@if $color == null
+		@error exception.undefined-config('color', $names)
+
+	@if meta.type-of($color) != 'color'
+		@error exception.helper-type-error('color', $names)
+
+	@return $color
+
+
+///
+/// Gets a configured size by the specified names.
+///
+/// @param {String | List} $names - A list of configuration names that indicate the size to be selected.
+/// @return {Number}
+///
+/// @throw The configuration for `size(#{$names})` has not been defined
+/// @throw No size was found for `size(#{$names})`
+///
+/// @access public
+/// @require exception.helper-type-error
+/// @require exception.undefined-config
+/// @require get.internal_get
+/// @require list.prepend
+///
+@function size($names)
+	$size: get.internal_get(list.prepend($names, 'size'))
+
+	@if $size == null
+		@error exception.undefined-config('size', $names)
+
+	@if meta.type-of($size) != 'number'
+		@error exception.helper-type-error('size', $names)
+
+	@return $size

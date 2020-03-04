@@ -1,0 +1,53 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group api
+////
+
+@use 'exception'
+@use 'map'
+
+
+///
+/// A map which is expected to be configured when using the module.
+///
+/// @type Map
+///
+/// @access public
+///
+$config: () !default
+
+
+///
+/// Gets a configured value by the specified names.
+///
+/// @param {String | List} $names - A list of configuration names that indicate the value to be selected.
+/// @return {*}
+///
+/// @throw The configuration for `get(#{$names})` has not been defined
+///
+/// @access public
+/// @require exception.message
+///
+@function get($names)
+	$value: internal_get($names)
+
+	@if $value == null
+		@error exception.undefined-config('get', $names)
+
+	@return $value
+
+
+///
+/// Gets a configured value by the specified names.
+///
+/// @param {String | List} $names - A list of configuration names that indicate the value to be selected.
+/// @return {*}
+///
+/// @access private
+/// @group internal
+/// @require map.select
+///
+@function internal_get($names)
+	@return map.select($config, $names)

@@ -1,0 +1,42 @@
+{
+	"name": "sass-module-config",
+	"description": "A Sass module for defining immutable configuration singletons.",
+	"version": "1.0.0",
+	"author": "roydukkey",
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/roydukkey/sass-module-config.git"
+	},
+	"homepage": "https://github.com/roydukkey/sass-module-config#readme",
+	"bugs": {
+		"url": "https://github.com/roydukkey/sass-module-config/issues"
+	},
+	"keywords": [
+		"sass",
+		"scss",
+		"config",
+		"settings",
+		"manager",
+		"map",
+		"library",
+		"readonly",
+		"immutable",
+		"private",
+		"variables"
+	],
+	"dependencies": {
+		"sass": "^1.23.0"
+	},
+	"devDependencies": {
+		"jest": "^25.1.0",
+		"sass-true": "^5.0.0"
+	},
+	"main": "./index.sass",
+	"scripts": {
+		"test": "jest"
+	},
+	"jest": {
+		"testEnvironment": "node"
+	}
+}

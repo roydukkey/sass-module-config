@@ -1,0 +1,41 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group tests
+////
+
+@use 'sass:list' as sass-list
+@use 'sass:meta'
+@use 'src/functions/list'
+@use 'true'
+
+
+@include true.describe('@function list.prepend')
+	$input: 1 2
+	$output: 3 1 2
+	$option: 3
+
+	@include true.it('Returns a list')
+		@include true.assert-equal(meta.type-of(list.prepend($input, $option)), 'list')
+
+	@include true.it('Prepends an item to a list')
+		@include true.assert-equal(list.prepend($input, $option), $output)
+
+	@include true.it('Accepts the `$separator` parameter')
+		@include true.assert-equal(sass-list.separator(list.prepend($input, $option)), 'space')
+		@include true.assert-equal(sass-list.separator(list.prepend($input, $option, 'comma')), 'comma')
+
+		$input: 1, 2
+		@include true.assert-equal(sass-list.separator(list.prepend($input, $option)), 'comma')
+		@include true.assert-equal(sass-list.separator(list.prepend($input, $option, 'space')), 'space')
+
+
+@include true.describe('@function list.nth-remove')
+	$input: 1 3 2
+	$output: 1 2
+	$option: 2
+
+	@include true.it('Removes an item from a list')
+		@include true.assert-equal(list.nth-remove($input, $option), $output)
+

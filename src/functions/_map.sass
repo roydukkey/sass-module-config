@@ -1,0 +1,58 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group internal
+////
+
+@use 'exception'
+@use 'list'
+@use 'sass:map'
+@use 'sass:meta'
+@use 'sass:list' as sass-list
+
+
+///
+/// Selects the value in `$map` associated with `$keys`.
+///
+/// @param {Map} $map - A map to be queried.
+/// @param {List | String | Number | Color | Boolean} $keys - A key or list of keys that select the value in the map.
+/// @return {*} - The value associated with the keys; otherwise, null.
+///
+/// @throw $map: `#{$map}` is not a map for `select()`
+///
+/// @access private
+/// @require exception.message
+/// @require list.nth-remove
+///
+@function select($map, $keys)
+	@if meta.type-of($map) != 'map'
+		@error exception.type-error('select', 'map', 'map', $map)
+
+	// Assume single key was provided.
+	$key: $keys
+
+	// If it is a list and not a single key.
+	@if meta.type-of($keys) == 'list' and sass-list.length($keys) > 0
+
+		// Get the last key
+		$key: sass-list.nth($keys, sass-list.length($keys))
+
+		// Filter map for all keys except the last.
+		@each $outer-key in list.nth-remove($keys, sass-list.length($keys))
+			@if map.has-key($map, $outer-key)
+				$map: map.get($map, $outer-key)
+
+	// Filter for last group.
+	@if map.has-key($map, $key)
+		$map: map.get($map, $key)
+
+		// Target the group's default; ie. &: #000
+		@if meta.type-of($map) == 'map' and map.has-key($map, null)
+			$map: map.get($map, null)
+
+	@else
+		// No value was found.
+		@return null
+
+	@return $map

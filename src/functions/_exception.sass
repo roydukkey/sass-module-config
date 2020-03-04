@@ -1,0 +1,50 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group internal
+////
+
+@use 'sass:meta'
+@use 'sass:string'
+
+
+///
+/// Gets an error stating that a parameter received the wrong type.
+///
+///	@param {String} $func - The name of the function which received the wrong type of parameter.
+/// @param {String} $param - The name of the parameter which has received the wrong type.
+/// @param {String} $type - The type which is expected.
+/// @param {*} $value - The value which was received.
+/// @return {String}
+///
+/// @access private
+///
+@function type-error($func, $param, $type, $value)
+	@return "$#{$param}: `#{$value}` is not a #{string.unquote($type)} for `#{$func}()`"
+
+
+///
+/// Gets an error stating a configuration has not been defined.
+///
+///	@param {String} $func - The name of the function which is attempting to retrieve an undefined configuration.
+/// @param {String} $names - The list of configuration names which have not been configured.
+/// @return {String}
+///
+/// @access private
+///
+@function undefined-config($func, $names)
+	@return 'The configuration for `#{$func}(#{meta.inspect($names)})` has not been defined'
+
+
+///
+/// Gets an error stating the helper retrieved a value of the wrong type.
+///
+///	@param {String} $func - The name of the function which retrieved the wrong type.
+/// @param {String} $names - The name of the parameter which has retrieved the wrong type.
+/// @return {String}
+///
+/// @access private
+///
+@function helper-type-error($func, $names)
+	@return 'No #{$func} was found for `#{$func}(#{meta.inspect($names)})`'

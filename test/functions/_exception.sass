@@ -1,0 +1,30 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group tests
+////
+
+@use 'src/functions/exception'
+@use 'true'
+
+
+@include true.describe('@function exception.type-error')
+	@include true.it('Correctly creates message')
+		$input: exception.type-error('nth-remove', 'index', 'number', true)
+		$output: '$index: `true` is not a number for `nth-remove()`'
+		@include true.assert-equal($input, $output)
+
+
+@include true.describe('@function exception.undefined-config')
+	@include true.it('Correctly creates message')
+		$input: exception.undefined-config('get', (key1 key2))
+		$output: 'The configuration for `get(key1 key2)` has not been defined'
+		@include true.assert-equal($input, $output)
+
+
+@include true.describe('@function exception.helper-type-error')
+	@include true.it('Correctly creates message')
+		$input: exception.helper-type-error('color', ('key1' key2))
+		$output: 'No color was found for `color("key1" key2)`'
+		@include true.assert-equal($input, $output)

@@ -1,0 +1,85 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group tests
+/// @deprecated This file uses the bracket syntax until multi-line maps are supported. @link http://github.com/sass/sass/issues/216
+////
+
+@use 'sass:list' as sass-list;
+@use 'sass:meta';
+@use 'src/functions/map';
+@use '../true';
+
+
+@include true.describe('@function map.select') {
+
+	$input: (
+		null: 'NULL', // Same as `&:`
+		one: 'a',
+		two: (
+			&: 'b',
+			five: 'E',
+			six: (
+				&: 'F',
+				seven: 'G'
+			)
+		),
+		three: 'c',
+		4: 'd',
+		#000: 'black',
+		true: 'TRUE',
+		false: 'FALSE'
+	);
+
+	@include true.for((
+		(one, 'a'),
+		('three', 'c')
+	)) using ($i, $option, $output) {
+		@include true.it('Selects a value from a map by a single key as a string (#{$i}) [#{meta.inspect($option)}]') {
+			@include true.assert-equal(map.select($input, $option), $output);
+		}
+	}
+
+	@include true.it('Selects a value from a map by a single key as a number') {
+		$option: 4;
+		$output: 'd';
+		@include true.assert-equal(map.select($input, $option), $output);
+	}
+
+	@include true.it('Selects a value from a map by a single key as a color') {
+		$option: #000;
+		$output: 'black';
+		@include true.assert-equal(map.select($input, $option), $output);
+	}
+
+	@include true.for((
+		(true, 'TRUE'),
+		(false, 'FALSE')
+	)) using ($i, $option, $output) {
+		@include true.it('Selects a value from a map by a single key as a boolean (#{$i}) [#{meta.inspect($option)}]') {
+			@include true.assert-equal(map.select($input, $option), $output);
+		}
+	}
+
+	@include true.for((
+		(two five, 'E'),
+		(two six seven, 'G')
+	)) using ($i, $option, $output) {
+		@include true.it('Selects a value from a map by multiple keys (#{$i}) [#{meta.inspect($option)}]') {
+			@include true.assert-equal(map.select($input, $option), $output);
+		}
+	}
+
+	@include true.for((
+		(null, 'NULL'),
+		(&, 'NULL'),
+		(two, 'b'),
+		(two six, 'F')
+	)) using ($i, $option, $output) {
+		@include true.it('Selects a default value from a map by the given key/s (#{$i}) [#{meta.inspect($option)}]') {
+			@include true.assert-equal(map.select($input, $option), $output);
+		}
+	}
+
+}

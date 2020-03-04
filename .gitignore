@@ -1,0 +1,12 @@
+# User-specific files
+*.vs
+*.user
+
+# Package Managers
+node_modules
+npm-debug.log
+
+# Build Artifacts
+*.lock.json
+*-lock.json
+*.cache
