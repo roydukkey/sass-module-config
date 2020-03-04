@@ -21,7 +21,7 @@
 /// @access private
 ///
 @function type-error($func, $param, $type, $value)
-	@return "$#{$param}: `#{$value}` is not a #{string.unquote($type)} for `#{$func}()`"
+	@return "$#{$param}: `#{meta.inspect($value)}` is not a #{string.unquote($type)} for `#{$func}()`"
 
 
 ///
