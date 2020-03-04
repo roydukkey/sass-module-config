@@ -11,20 +11,20 @@
 
 @include true.describe('@function exception.type-error')
 	@include true.it('Correctly creates message')
-		$input: exception.type-error('nth-remove', 'index', 'number', true)
-		$output: '$index: `true` is not a number for `nth-remove()`'
-		@include true.assert-equal($input, $output)
+		$asset: exception.type-error('nth-remove', 'index', 'number', true)
+		$expected: '$index: `true` is not a number for `nth-remove()`'
+		@include true.assert-equal($asset, $expected)
 
 
 @include true.describe('@function exception.undefined-config')
 	@include true.it('Correctly creates message')
-		$input: exception.undefined-config('get', (key1 key2))
-		$output: 'The configuration for `get(key1 key2)` has not been defined'
-		@include true.assert-equal($input, $output)
+		$asset: exception.undefined-config('get', (key1 key2))
+		$expected: 'The configuration for `get(key1 key2)` has not been defined'
+		@include true.assert-equal($asset, $expected)
 
 
 @include true.describe('@function exception.helper-type-error')
 	@include true.it('Correctly creates message')
-		$input: exception.helper-type-error('color', ('key1' key2))
-		$output: 'No color was found for `color("key1" key2)`'
-		@include true.assert-equal($input, $output)
+		$asset: exception.helper-type-error('color', ('key1' key2))
+		$expected: 'No color was found for `color("key1" key2)`'
+		@include true.assert-equal($asset, $expected)

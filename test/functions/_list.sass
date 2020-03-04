@@ -12,30 +12,44 @@
 
 
 @include true.describe('@function list.prepend')
-	$input: 1 2
-	$output: 3 1 2
+	$list: 1 2
 	$option: 3
 
 	@include true.it('Returns a list')
-		@include true.assert-equal(meta.type-of(list.prepend($input, $option)), 'list')
+		$assert: meta.type-of(list.prepend($list, $option))
+		$expected: 'list'
+		@include true.assert-equal($assert, 'list')
 
 	@include true.it('Prepends an item to a list')
-		@include true.assert-equal(list.prepend($input, $option), $output)
+		$assert: list.prepend($list, $option)
+		$expected: 3 1 2
+		@include true.assert-equal($assert, $expected)
 
 	@include true.it('Accepts the `$separator` parameter')
-		@include true.assert-equal(sass-list.separator(list.prepend($input, $option)), 'space')
-		@include true.assert-equal(sass-list.separator(list.prepend($input, $option, 'comma')), 'comma')
+		$assert: sass-list.separator(list.prepend($list, $option))
+		$expected: 'space'
+		@include true.assert-equal($assert, $expected)
 
-		$input: 1, 2
-		@include true.assert-equal(sass-list.separator(list.prepend($input, $option)), 'comma')
-		@include true.assert-equal(sass-list.separator(list.prepend($input, $option, 'space')), 'space')
+		$assert: sass-list.separator(list.prepend($list, $option, 'comma'))
+		$expected: 'comma'
+		@include true.assert-equal($assert, $expected)
+
+		$list: 1, 2
+		$assert: sass-list.separator(list.prepend($list, $option))
+		$expected: 'comma'
+		@include true.assert-equal($assert, $expected)
+
+		$assert: sass-list.separator(list.prepend($list, $option, 'space'))
+		$expected: 'space'
+		@include true.assert-equal($assert, $expected)
 
 
 @include true.describe('@function list.nth-remove')
-	$input: 1 3 2
-	$output: 1 2
+	$list: 1 3 2
 	$option: 2
 
 	@include true.it('Removes an item from a list')
-		@include true.assert-equal(list.nth-remove($input, $option), $output)
+		$assert: list.nth-remove($list, $option)
+		$expected: 1 2
+		@include true.assert-equal($assert, $expected)
 

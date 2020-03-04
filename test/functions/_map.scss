@@ -14,7 +14,7 @@
 
 @include true.describe('@function map.select') {
 
-	$input: (
+	$config: (
 		null: 'NULL', // Same as `&:`
 		one: 'a',
 		two: (
@@ -35,39 +35,42 @@
 	@include true.for((
 		(one, 'a'),
 		('three', 'c')
-	)) using ($i, $option, $output) {
+	)) using ($i, $option, $expected) {
 		@include true.it('Selects a value from a map by a single key as a string (#{$i}) [#{meta.inspect($option)}]') {
-			@include true.assert-equal(map.select($input, $option), $output);
+			$assert: map.select($config, $option);
+			@include true.assert-equal($assert, $expected);
 		}
 	}
 
 	@include true.it('Selects a value from a map by a single key as a number') {
-		$option: 4;
-		$output: 'd';
-		@include true.assert-equal(map.select($input, $option), $output);
+		$assert: map.select($config, 4);
+		$expected: 'd';
+		@include true.assert-equal($assert, $expected);
 	}
 
 	@include true.it('Selects a value from a map by a single key as a color') {
-		$option: #000;
-		$output: 'black';
-		@include true.assert-equal(map.select($input, $option), $output);
+		$assert: map.select($config, #000);
+		$expected: 'black';
+		@include true.assert-equal($assert, $expected);
 	}
 
 	@include true.for((
 		(true, 'TRUE'),
 		(false, 'FALSE')
-	)) using ($i, $option, $output) {
+	)) using ($i, $option, $expected) {
 		@include true.it('Selects a value from a map by a single key as a boolean (#{$i}) [#{meta.inspect($option)}]') {
-			@include true.assert-equal(map.select($input, $option), $output);
+			$assert: map.select($config, $option);
+			@include true.assert-equal($assert, $expected);
 		}
 	}
 
 	@include true.for((
 		(two five, 'E'),
 		(two six seven, 'G')
-	)) using ($i, $option, $output) {
+	)) using ($i, $option, $expected) {
 		@include true.it('Selects a value from a map by multiple keys (#{$i}) [#{meta.inspect($option)}]') {
-			@include true.assert-equal(map.select($input, $option), $output);
+			$assert: map.select($config, $option);
+			@include true.assert-equal($assert, $expected);
 		}
 	}
 
@@ -76,9 +79,10 @@
 		(&, 'NULL'),
 		(two, 'b'),
 		(two six, 'F')
-	)) using ($i, $option, $output) {
+	)) using ($i, $option, $expected) {
 		@include true.it('Selects a default value from a map by the given key/s (#{$i}) [#{meta.inspect($option)}]') {
-			@include true.assert-equal(map.select($input, $option), $output);
+			$assert: map.select($config, $option);
+			@include true.assert-equal($assert, $expected);
 		}
 	}
 
