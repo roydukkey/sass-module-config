@@ -71,39 +71,56 @@ body {
 
 *Notice:* The ampersand (`&`) indicates the default value for the map on which it is defined. The use of ampersand is no different than using `null` as the map key.
 
-## General API
+## Public API
 
-### `@function get($names)`
+#### `@function get($names)`
 
 Gets a configured value by the specified names.
 
-`@param {String | List} $names` - A list of configuration names that indicate the value to be selected.<br>
-`@return {*}` - The configured value.<br>
-`@throw` - The configuration for \`get(#{$names})\` has not been defined.
+<dl>
+  <dt><code>@param {String | List} $names</code></dt>
+  <dd>A list of configuration names that indicate the value to be selected.</dd>
+  <dt><code>@return {*}</code></dt>
+  <dd>The configured value.</dd>
+  <dt><code>@throw</code></dt>
+  <dd>The configuration for `get(#{$names})` has not been defined.</dd>
+</dl>
 
-## Helpers
+### Helpers
 
 Two helpers have been provided to improve type checking and organisation of color and size values. These may be accessed at the `sass-module-config/helpers` namespace.
 
-### `@function color($names)`
+#### `@function color($names)`
 
 Gets a configured color by the specified names.
 
-`@param {String | List} $names` - A list of configuration names that indicate the color to be selected.<br>
-`@return {Color}` - The configured color.<br>
-`@throw` - The configuration for \`color(#{$names})\` has not been defined.<br>
-`@throw` - No color was found for \`color(#{$names})\`.
+<dl>
+  <dt><code>@param {String | List} $names</code></dt>
+  <dd>A list of configuration names that indicate the color to be selected.</dd>
+  <dt><code>@return {Color}</code></dt>
+  <dd>The configured color.</dd>
+  <dt><code>@throw</code></dt>
+  <dd>The configuration for `color(#{$names})` has not been defined.</dd>
+  <dt><code>@throw</code></dt>
+  <dd>No color was found for `color(#{$names})`.</dd>
+</dl>
 
-### `@function size($names)`
+#### `@function size($names)`
 
 Gets a configured size by the specified names.
 
-`@param {String | List} $names` - A list of configuration names that indicate the size to be selected.<br>
-`@return {Number}` - The configured size.<br>
-`@throw` - The configuration for \`size(#{$names})\` has not been defined.<br>
-`@throw` - No size was found for \`size(#{$names})\`.
+<dl>
+  <dt><code>@param {String | List} $names</code></dt>
+  <dd>A list of configuration names that indicate the size to be selected.</dd>
+  <dt><code>@return {Number}</code></dt>
+  <dd>The configured size.</dd>
+  <dt><code>@throw</code></dt>
+  <dd>The configuration for `size(#{$names})` has not been defined.</dd>
+  <dt><code>@throw</code></dt>
+  <dd>No size was found for `size(#{$names})`.</dd>
+</dl>
 
-## Example
+## Example with Helpers
 
 ```scss
 // config.scss
