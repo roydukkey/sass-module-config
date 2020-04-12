@@ -29,7 +29,7 @@ $config: sass-map.merge((), ()) !default
 /// @throw The configuration for `get(#{$names})` has not been defined
 ///
 /// @access public
-/// @require exception.message
+/// @require exception.undefined-config
 ///
 @function get($names)
 	$value: internal_get($names)
