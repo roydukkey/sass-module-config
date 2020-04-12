@@ -48,10 +48,10 @@
 		@error exception.type-error('nth-remove', 'index', 'number', $index)
 
 	@else if $index == 0
-		@error 'List index must be a non-zero integer for `#{$function}()`.'
+		@error 'List index must be a non-zero integer for `nth-remove()`'
 
 	@else if math.abs($index) > list.length($list)
-		@error 'List index is `#{$index}` but list is only `#{list.length($list)}` item long for `#{$function}()`.'
+		@error 'List index is `#{$index}` but list is only `#{list.length($list)}` item long for `nth-remove()`'
 
 	@else
 		$index: if($index < 0, list.length($list) + $index + 1, $index)
