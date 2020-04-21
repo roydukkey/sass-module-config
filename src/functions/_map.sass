@@ -8,7 +8,7 @@
 @use 'sass:map'
 @use 'sass:meta'
 @use 'sass:list'
-@use 'exception'
+@use '../internal'
 @use '../../node_modules/sass-list'
 
 
@@ -22,13 +22,13 @@
 /// @throw $map: `#{$map}` is not a map for `select()`
 ///
 /// @access private
-/// @require exception.type-error
+/// @require internal.exception-type-error
 /// @require sass-list.nth-remove
 ///
 @function select($map, $keys)
 
 	@if meta.type-of($map) != 'map'
-		@error exception.type-error('select', 'map', 'map', $map)
+		@error internal.exception-type-error('select', 'map', 'map', $map)
 
 	// Assume single key was provided.
 	$key: $keys

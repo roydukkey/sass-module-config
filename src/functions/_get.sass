@@ -5,9 +5,9 @@
 /// @group api
 ////
 
-@use 'exception'
-@use 'map'
 @use 'sass:map' as sass-map
+@use 'map'
+@use '../internal'
 
 
 ///
@@ -29,13 +29,13 @@ $config: sass-map.merge((), ()) !default
 /// @throw The configuration for `get(#{$names})` has not been defined
 ///
 /// @access public
-/// @require exception.undefined-config
+/// @require internal.exception-undefined-config
 ///
 @function get($names)
 	$value: internal_get($names)
 
 	@if $value == null
-		@error exception.undefined-config('get', $names)
+		@error internal.exception-undefined-config('get', $names)
 
 	@return $value
 

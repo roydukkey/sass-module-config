@@ -28,8 +28,8 @@
 ));
 
 
-@include true.describe("@import 'functions/exception'") {
-	@import 'functions/exception';
+@include true.describe("@import 'internal/exception'") {
+	@import 'internal/exception';
 }
 
 @include true.describe("@import 'functions/map'") {
