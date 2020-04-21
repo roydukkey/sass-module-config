@@ -52,8 +52,8 @@
 		@if meta.type-of($map) == 'map' and map.has-key($map, null)
 			$map: map.get($map, null)
 
-	// No value was found.
 	@else
+		// No value was found.
 		@return null
 
 	@return $map
