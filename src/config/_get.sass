@@ -5,19 +5,7 @@
 /// @group api
 ////
 
-@use 'sass:map' as sass-map
-@use 'map'
 @use '../internal'
-
-
-///
-/// A map which is expected to be configured when using the module.
-///
-/// @type Map
-///
-/// @access public
-///
-$config: sass-map.merge((), ()) !default
 
 
 ///
@@ -31,27 +19,14 @@ $config: sass-map.merge((), ()) !default
 /// @access public
 /// @require internal.$exception-function
 /// @require internal.exception-undefined-config
+/// @require internal.get
 ///
 @function get($names)
 	internal.$exception-function: 'get'
 
-	$value: internal_get($names)
+	$value: internal.get($names)
 
 	@if $value == null
 		@error internal.exception-undefined-config($names)
 
 	@return $value
-
-
-///
-/// Gets a configured value by the specified names.
-///
-/// @param {String | List} $names - A list of configuration names that indicate the value to be selected.
-/// @return {*}
-///
-/// @access private
-/// @group internal
-/// @require map.select
-///
-@function internal_get($names)
-	@return map.select($config, $names)

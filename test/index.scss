@@ -7,7 +7,7 @@
 ////
 
 @use 'true';
-@use 'src' with ($config: (
+@use 'index.sass' with ($config: (
 	size: (
 		header: (
 			width: 100%,
@@ -27,8 +27,14 @@
 	)
 ));
 
-
+// Required by 'src/internal/map'
+// Required by 'src/config/get'
+// Required by 'src/config/helpers'
 @import 'internal/exception';
-@import 'functions/map';
-@import 'functions/get';
-@import 'functions/helpers';
+// Required by 'src/internal/get'
+@import 'internal/map';
+// Required by 'src/config/get'
+// Required by 'src/config/helpers'
+@import 'internal/get';
+@import 'config/get';
+@import 'config/helpers';

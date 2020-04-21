@@ -5,11 +5,11 @@
 /// @group tests
 ////
 
-@use 'src/functions/helpers'
+@use 'src/config/helpers'
 @use 'true'
 
 
-@include true.describe('@function helpers.color')
+@include true.describe('@function api-helpers.color')
 
 	@include true.it('Get a map of colors from the configuration')
 		$assert: helpers.color(accent)
@@ -22,7 +22,7 @@
 		@include true.assert-equal($assert, $expected)
 
 
-@include true.describe('@function helpers.size')
+@include true.describe('@function api-helpers.size')
 
 	@include true.it('Get a map of sizes from the configuration')
 		$assert: helpers.size(header)

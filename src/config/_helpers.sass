@@ -6,7 +6,6 @@
 ////
 
 @use 'sass:meta'
-@use 'get'
 @use '../internal'
 @use '../../node_modules/sass-list'
 
@@ -21,16 +20,16 @@
 /// @throw No color or color map was found for `color(#{$names})`
 ///
 /// @access public
-/// @require get.internal_get
 /// @require internal.$exception-function
 /// @require internal.exception-helper-type
 /// @require internal.exception-undefined-config
+/// @require internal.get
 /// @require sass-list.prepend
 ///
 @function color($names)
 	internal.$exception-function: 'color'
 
-	$color: get.internal_get(sass-list.prepend($names, 'color'))
+	$color: internal.get(sass-list.prepend($names, 'color'))
 
 	@if $color == null
 		@error internal.exception-undefined-config($names)
@@ -51,16 +50,16 @@
 /// @throw No size or size map was found for `size(#{$names})`
 ///
 /// @access public
-/// @require get.internal_get
 /// @require internal.$exception-function
 /// @require internal.exception-helper-type
 /// @require internal.exception-undefined-config
+/// @require internal.get
 /// @require sass-list.prepend
 ///
 @function size($names)
 	internal.$exception-function: 'size'
 
-	$size: get.internal_get(sass-list.prepend($names, 'size'))
+	$size: internal.get(sass-list.prepend($names, 'size'))
 
 	@if $size == null
 		@error internal.exception-undefined-config($names)

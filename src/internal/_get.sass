@@ -1,0 +1,22 @@
+// Copyright (c) roydukkey. All rights reserved.
+// Licensed under the MIT. See LICENSE file in the project root for full license information.
+////
+/// @author roydukkey
+/// @group internal
+////
+
+@use '../internal/map'
+@use '../config/config'
+
+
+///
+/// Gets a configured value by the specified names.
+///
+/// @param {String | List} $names - A list of configuration names that indicate the value to be selected.
+/// @return {*}
+///
+/// @access public
+/// @require map.select
+///
+@function get($names)
+	@return map.select(config.$config, $names)

@@ -2,20 +2,6 @@
 // Licensed under the MIT. See LICENSE file in the project root for full license information.
 ////
 /// @author roydukkey
-/// @group api
 ////
 
-@use 'sass:map'
-
-
-///
-/// A map which is expected to be configured when using the module.
-///
-/// @type Map
-///
-/// @access public
-///
-$config: map.merge((), ()) !default
-
-
-@forward 'src' with ($config: $config)
+@forward 'src'

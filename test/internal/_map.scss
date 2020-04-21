@@ -8,11 +8,11 @@
 
 @use 'sass:list' as sass-list;
 @use 'sass:meta';
-@use 'src/functions/map';
+@use 'src/internal/map';
 @use 'true';
 
 
-@include true.describe('@function map.select') {
+@include true.describe('@function internal.map-select') {
 
 	$config: (
 		null: 'NULL', // Same as `&:`

@@ -5,29 +5,15 @@
 /// @group tests
 ////
 
-@use 'src/functions/get'
+@use 'src/internal/get'
 @use 'true'
 
-
-@include true.describe('@function get.internal_get')
+@include true.describe('@function internal.get')
 
 	@include true.it('Get null when the requested configuration is not defined')
-		$assert: get.internal_get(header)
+		$assert: get.get(header)
 		$expected: null
 		@include true.assert-equal($assert, $expected)
-
-	@include true.it('Get a map from the configuration')
-		$assert: get.internal_get(size)
-		$expected: (header: (width: 100%, height: 200px))
-		@include true.assert-equal($assert, $expected)
-
-	@include true.it('Get a value from the configuration')
-		$assert: get.internal_get(color 'text')
-		$expected: #ddd
-		@include true.assert-equal($assert, $expected)
-
-
-@include true.describe('@function get.get')
 
 	@include true.it('Get a map from the configuration')
 		$assert: get.get(size)

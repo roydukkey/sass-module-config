@@ -27,7 +27,7 @@ $function: null
 /// @param {ArgList} $params - The names of the parameters for which there is an issue.
 /// @return {String}
 ///
-/// @access private
+/// @access public
 /// @requires $function
 /// @requires sass-list.join
 ///
@@ -57,7 +57,7 @@ $function: null
 /// @param {String} $names - The list of configuration names which have not been configured.
 /// @return {String}
 ///
-/// @access private
+/// @access public
 ///
 @function undefined-config($names)
 	@return 'The configuration for `#{$function}(#{meta.inspect($names)})` has not been defined.'
@@ -69,7 +69,7 @@ $function: null
 /// @param {String} $names - The name of the parameter which has retrieved the wrong type.
 /// @return {String}
 ///
-/// @access private
+/// @access public
 ///
 @function helper-type($names)
 	@return 'No #{$function} or #{$function} map was found for `#{$function}(#{meta.inspect($names)})`.'
