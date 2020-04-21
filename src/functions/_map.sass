@@ -22,13 +22,15 @@
 /// @throw $map: `#{$map}` is not a map for `select()`
 ///
 /// @access private
-/// @require internal.exception-type-error
+/// @require internal.$exception-function
+/// @require internal.exception-type
 /// @require sass-list.nth-remove
 ///
 @function select($map, $keys)
+	internal.$exception-function: 'select'
 
 	@if meta.type-of($map) != 'map'
-		@error internal.exception-type-error('select', 'map', 'map', $map)
+		@error internal.exception-type('map', $map, 'map')
 
 	// Assume single key was provided.
 	$key: $keys

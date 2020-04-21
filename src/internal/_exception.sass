@@ -7,44 +7,69 @@
 
 @use 'sass:meta'
 @use 'sass:string'
+@use '../../node_modules/sass-list'
 
 
 ///
-/// Gets an error stating that a parameter received the wrong type.
+/// The name of the function issuing the error.
 ///
-///	@param {String} $func - The name of the function which received the wrong type of parameter.
-/// @param {String} $param - The name of the parameter which has received the wrong type.
-/// @param {String} $type - The type which is expected.
-/// @param {*} $value - The value which was received.
+/// @type String
+///
+/// @access public
+///
+$function: null
+
+
+///
+/// Structures an error message stating an issue with one or more parameters.
+///
+/// @param {String} $value - The message which describes the issue.
+/// @param {ArgList} $params - The names of the parameters for which there is an issue.
 /// @return {String}
 ///
 /// @access private
+/// @requires $function
+/// @requires sass-list.join
 ///
-@function type-error($func, $param, $type, $value)
-	@return "$#{$param}: `#{meta.inspect($value)}` is not a #{string.unquote($type)} for `#{$func}()`"
+@function param($message, $params...)
+	$params: sass-list.join($params, ', $')
+	@return string.unquote('$#{$params}: #{$message} for `#{$function}()`.')
+
+
+///
+/// Gets an error message stating that a parameter received the wrong type.
+///
+/// @param {String} $param - The name of the parameter which has received the wrong type.
+/// @param {*} $value - The value which was received.
+/// @param {String} $type - The type which is expected.
+/// @return {String}
+///
+/// @access public
+/// @require param
+///
+@function type($param, $value, $type)
+	@return param('`#{meta.inspect($value)}` is not a #{string.unquote($type)}', $param)
 
 
 ///
 /// Gets an error stating a configuration has not been defined.
 ///
-///	@param {String} $func - The name of the function which is attempting to retrieve an undefined configuration.
 /// @param {String} $names - The list of configuration names which have not been configured.
 /// @return {String}
 ///
 /// @access private
 ///
-@function undefined-config($func, $names)
-	@return 'The configuration for `#{$func}(#{meta.inspect($names)})` has not been defined'
+@function undefined-config($names)
+	@return 'The configuration for `#{$function}(#{meta.inspect($names)})` has not been defined.'
 
 
 ///
 /// Gets an error stating the helper retrieved a value of the wrong type.
 ///
-///	@param {String} $func - The name of the function which retrieved the wrong type.
 /// @param {String} $names - The name of the parameter which has retrieved the wrong type.
 /// @return {String}
 ///
 /// @access private
 ///
-@function helper-type-error($func, $names)
-	@return 'No #{$func} or #{$func} map was found for `#{$func}(#{meta.inspect($names)})`'
+@function helper-type($names)
+	@return 'No #{$function} or #{$function} map was found for `#{$function}(#{meta.inspect($names)})`.'

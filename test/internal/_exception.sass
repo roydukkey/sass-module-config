@@ -9,22 +9,25 @@
 @use 'true'
 
 
-@include true.describe('@function internal.exception-type-error')
+@include true.describe('@function internal.exception-type')
 	@include true.it('Correctly creates message')
-		$asset: internal.exception-type-error('nth-remove', 'index', 'number', true)
-		$expected: '$index: `true` is not a number for `nth-remove()`'
+		internal.$exception-function: 'select'
+		$asset: internal.exception-type('name', true, 'string')
+		$expected: '$name: `true` is not a string for `select()`.'
 		@include true.assert-equal($asset, $expected)
 
 
 @include true.describe('@function internal.exception-undefined-config')
 	@include true.it('Correctly creates message')
-		$asset: internal.exception-undefined-config('get', (key1 key2))
-		$expected: 'The configuration for `get(key1 key2)` has not been defined'
+		internal.$exception-function: 'get'
+		$asset: internal.exception-undefined-config((key1 key2))
+		$expected: 'The configuration for `get(key1 key2)` has not been defined.'
 		@include true.assert-equal($asset, $expected)
 
 
-@include true.describe('@function internal.exception-helper-type-error')
+@include true.describe('@function internal.exception-helper-type')
 	@include true.it('Correctly creates message')
-		$asset: internal.exception-helper-type-error('color', ('key1' key2))
-		$expected: 'No color or color map was found for `color("key1" key2)`'
+		internal.$exception-function: 'color'
+		$asset: internal.exception-helper-type(('key1' key2))
+		$expected: 'No color or color map was found for `color("key1" key2)`.'
 		@include true.assert-equal($asset, $expected)

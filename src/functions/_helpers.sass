@@ -21,19 +21,22 @@
 /// @throw No color or color map was found for `color(#{$names})`
 ///
 /// @access public
-/// @require internal.exception-helper-type-error
-/// @require internal.exception-undefined-config
 /// @require get.internal_get
+/// @require internal.$exception-function
+/// @require internal.exception-helper-type
+/// @require internal.exception-undefined-config
 /// @require sass-list.prepend
 ///
 @function color($names)
+	internal.$exception-function: 'color'
+
 	$color: get.internal_get(sass-list.prepend($names, 'color'))
 
 	@if $color == null
-		@error internal.exception-undefined-config('color', $names)
+		@error internal.exception-undefined-config($names)
 
 	@if meta.type-of($color) != 'color' and meta.type-of($color) != 'map'
-		@error internal.exception-helper-type-error('color', $names)
+		@error internal.exception-helper-type($names)
 
 	@return $color
 
@@ -48,18 +51,21 @@
 /// @throw No size or size map was found for `size(#{$names})`
 ///
 /// @access public
-/// @require internal.exception-helper-type-error
-/// @require internal.exception-undefined-config
 /// @require get.internal_get
+/// @require internal.$exception-function
+/// @require internal.exception-helper-type
+/// @require internal.exception-undefined-config
 /// @require sass-list.prepend
 ///
 @function size($names)
+	internal.$exception-function: 'size'
+
 	$size: get.internal_get(sass-list.prepend($names, 'size'))
 
 	@if $size == null
-		@error internal.exception-undefined-config('size', $names)
+		@error internal.exception-undefined-config($names)
 
 	@if meta.type-of($size) != 'number' and meta.type-of($size) != 'map'
-		@error internal.exception-helper-type-error('size', $names)
+		@error internal.exception-helper-type($names)
 
 	@return $size
