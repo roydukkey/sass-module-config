@@ -32,10 +32,6 @@
 	@import 'functions/exception';
 }
 
-@include true.describe("@import 'functions/list'") {
-	@import 'functions/list';
-}
-
 @include true.describe("@import 'functions/map'") {
 	@import 'functions/map';
 }

@@ -5,11 +5,11 @@
 /// @group internal
 ////
 
-@use 'exception'
-@use 'list'
 @use 'sass:map'
 @use 'sass:meta'
-@use 'sass:list' as sass-list
+@use 'sass:list'
+@use 'exception'
+@use '../../node_modules/sass-list'
 
 
 ///
@@ -23,9 +23,10 @@
 ///
 /// @access private
 /// @require exception.type-error
-/// @require list.nth-remove
+/// @require sass-list.nth-remove
 ///
 @function select($map, $keys)
+
 	@if meta.type-of($map) != 'map'
 		@error exception.type-error('select', 'map', 'map', $map)
 
@@ -33,13 +34,13 @@
 	$key: $keys
 
 	// If it is a list and not a single key.
-	@if meta.type-of($keys) == 'list' and sass-list.length($keys) > 0
+	@if meta.type-of($keys) == 'list' and list.length($keys) > 0
 
 		// Get the last key
-		$key: sass-list.nth($keys, sass-list.length($keys))
+		$key: list.nth($keys, list.length($keys))
 
 		// Filter map for all keys except the last.
-		@each $outer-key in list.nth-remove($keys, sass-list.length($keys))
+		@each $outer-key in sass-list.remove-nth($keys, list.length($keys))
 			@if map.has-key($map, $outer-key)
 				$map: map.get($map, $outer-key)
 
@@ -51,8 +52,8 @@
 		@if meta.type-of($map) == 'map' and map.has-key($map, null)
 			$map: map.get($map, null)
 
+	// No value was found.
 	@else
-		// No value was found.
 		@return null
 
 	@return $map

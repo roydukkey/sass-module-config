@@ -7,7 +7,7 @@
 
 @use 'exception'
 @use 'get'
-@use 'list'
+@use '../../node_modules/sass-list'
 @use 'sass:meta'
 
 
@@ -24,10 +24,10 @@
 /// @require exception.helper-type-error
 /// @require exception.undefined-config
 /// @require get.internal_get
-/// @require list.prepend
+/// @require sass-list.prepend
 ///
 @function color($names)
-	$color: get.internal_get(list.prepend($names, 'color'))
+	$color: get.internal_get(sass-list.prepend($names, 'color'))
 
 	@if $color == null
 		@error exception.undefined-config('color', $names)
@@ -51,10 +51,10 @@
 /// @require exception.helper-type-error
 /// @require exception.undefined-config
 /// @require get.internal_get
-/// @require list.prepend
+/// @require sass-list.prepend
 ///
 @function size($names)
-	$size: get.internal_get(list.prepend($names, 'size'))
+	$size: get.internal_get(sass-list.prepend($names, 'size'))
 
 	@if $size == null
 		@error exception.undefined-config('size', $names)

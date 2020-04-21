@@ -27,7 +27,8 @@
 		"variables"
 	],
 	"dependencies": {
-		"sass": "^1.23.0"
+		"sass": "^1.23.0",
+		"sass-list": "^1.0.0"
 	},
 	"devDependencies": {
 		"jest": "^25.1.0",
