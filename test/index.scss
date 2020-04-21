@@ -28,18 +28,7 @@
 ));
 
 
-@include true.describe("@import 'internal/exception'") {
-	@import 'internal/exception';
-}
-
-@include true.describe("@import 'functions/map'") {
-	@import 'functions/map';
-}
-
-@include true.describe("@import 'functions/get'") {
-	@import 'functions/get';
-}
-
-@include true.describe("@import 'functions/helpers'") {
-	@import 'functions/helpers';
-}
+@import 'internal/exception';
+@import 'functions/map';
+@import 'functions/get';
+@import 'functions/helpers';
