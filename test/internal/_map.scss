@@ -38,7 +38,7 @@
 			('three', 'c')
 		) {
 			$assert: map.select($config, $option);
-			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}]');
+			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}] >> ');
 		}
 	}
 
@@ -60,7 +60,7 @@
 			(false, 'FALSE')
 		) {
 			$assert: map.select($config, $option);
-			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}]');
+			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}] >> ');
 		}
 	}
 
@@ -70,7 +70,7 @@
 			(two six seven, 'G')
 		) {
 			$assert: map.select($config, $option);
-			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}]');
+			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}] >> ');
 		}
 	}
 
@@ -82,7 +82,7 @@
 			(two six, 'F')
 		) {
 			$assert: map.select($config, $option);
-			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}]');
+			@include true.assert-equal($assert, $expected, '[#{meta.inspect($option)}] >> ');
 		}
 	}
 
