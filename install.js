@@ -10,7 +10,6 @@ fs.access(requiredPackage, fs.constants.R_OK, (err) => {
 	if (err) {
 
 		fsExtra.copy(fallbackPackage, requiredPackage, (err) => {
-			return console.error('Copied Sass-list');
 			if (err) {
 				return console.error(err);
 			}

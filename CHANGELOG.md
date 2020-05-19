@@ -1,3 +1,8 @@
+## 1.1.1
+
+* Add install script to ensure `sass-list` package is available at the required location
+* Move `sass` to a dev dependency
+
 ## 1.1.0
 
 * Replace internal list functions with [`sass-list`](https://www.npmjs.com/package/sass-list)

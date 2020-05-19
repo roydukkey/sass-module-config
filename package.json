@@ -1,7 +1,7 @@
 {
 	"name": "sass-module-config",
 	"description": "A Sass module for defining immutable configuration singletons.",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"author": "roydukkey",
 	"license": "MIT",
 	"repository": {
@@ -27,18 +27,18 @@
 		"variables"
 	],
 	"dependencies": {
-		"sass": "^1.23.0",
 		"sass-list": "^1.0.0",
 		"fs-extra": "^9.0.0"
 	},
 	"devDependencies": {
+		"sass": "^1.23.0",
 		"jest": "^25.1.0",
 		"sass-true": "^5.0.0"
 	},
 	"main": "./index.sass",
 	"scripts": {
-		"test": "jest",
-		"postinstall": "node ./build/install.js"
+		"postinstall": "node install.js",
+		"test": "jest"
 	},
 	"jest": {
 		"testEnvironment": "node"
