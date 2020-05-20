@@ -1,6 +1,6 @@
 ## 1.1.2
 
-* Fix issue #2
+* Fix issue #1
 
 ## 1.1.1
 
