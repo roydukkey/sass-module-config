@@ -1,3 +1,7 @@
+## 1.1.2
+
+* Fix issue #2
+
 ## 1.1.1
 
 * Add install script to ensure `sass-list` package is available at the required location

@@ -1,19 +1,30 @@
-const fs = require('fs');
-const fsExtra = require('fs-extra');
+const fs = require('fs-extra');
 
-const requiredPackage = './node_modules/sass-list';
-const fallbackPackage = '../sass-list';
+const requiredPath = './node_require/sass-list';
+const sourcePaths = ['./node_modules/sass-list', '../sass-list'];
 
-// Check to see if the required sass-list module exists at the required location.
-// This protect the user from need to configure their sass compiler to find this package.
-fs.access(requiredPackage, fs.constants.R_OK, (err) => {
+// Check to see if the required module exists at the required location.
+// This protects the user from needing to configure their sass compiler to find this package.
+fs.access(requiredPath, fs.constants.R_OK, (err) => {
 	if (err) {
+		let errors = [];
 
-		fsExtra.copy(fallbackPackage, requiredPackage, (err) => {
-			if (err) {
-				return console.error(err);
+		const success = sourcePaths.some((sourcePath) => {
+
+			try {
+				fs.copySync(sourcePath, requiredPath);
+				return true;
 			}
+			catch (err) {
+				errors.push[err];
+			}
+
+			return false;
+
 		});
 
+		if (!success) {
+			errors.forEach((error) => console.log(error));
+		}
 	}
 });
