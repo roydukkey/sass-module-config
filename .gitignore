@@ -4,6 +4,7 @@
 
 # Package Managers
 node_modules
+node_require
 npm-debug.log
 
 # Build Artifacts
