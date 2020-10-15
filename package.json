@@ -27,14 +27,14 @@
 		"variables"
 	],
 	"dependencies": {
-		"fs-extra": "^9.0.0",
-		"sass-list": "^1.0.0"
+		"fs-extra": "^9.0.1",
+		"sass-list": "^1.1.0"
 	},
 	"devDependencies": {
 		"cspell": "^4.1.0",
-		"jest": "^25.1.0",
-		"sass": "^1.23.0",
-		"sass-true": "^5.0.0"
+		"jest": "^26.5.3",
+		"sass": "^1.27.0",
+		"sass-true": "^6.0.0"
 	},
 	"main": "./index.sass",
 	"scripts": {
