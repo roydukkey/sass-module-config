@@ -1,0 +1,16 @@
+{
+	"ignorePaths": [
+		"node_modules/**/{.*/**/,.*/**/.,,.}*",
+		"node_require",
+		"*-lock.json",
+		".DS_Store",
+		".git",
+		".jest"
+	],
+	"words": [
+		"editorconfig",
+		"prepend",
+		"readonly",
+		"roydukkey"
+	]
+}

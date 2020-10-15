@@ -86,7 +86,7 @@ Gets a configured value by the specified names.
 
 ### Helpers
 
-Two helpers have been provided to improve type checking and organisation of color and size values. These may be accessed at the `sass-module-config/helpers` namespace.
+Two helpers have been provided to improve type checking and organization of color and size values. These may be accessed at the `sass-module-config/helpers` namespace.
 
 #### `@function color($names)`
 

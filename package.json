@@ -31,14 +31,17 @@
 		"sass-list": "^1.0.0"
 	},
 	"devDependencies": {
+		"cspell": "^4.1.0",
 		"jest": "^25.1.0",
 		"sass": "^1.23.0",
 		"sass-true": "^5.0.0"
 	},
 	"main": "./index.sass",
 	"scripts": {
-		"postinstall": "node install.js",
-		"test": "jest"
+		"lint": "cspell --config './.vscode/cSpell.json' '**/{.*/**/,.*/**/.,,.}*'",
+		"pretest": "npm run lint",
+		"test": "jest",
+		"postinstall": "node install.js"
 	},
 	"jest": {
 		"testEnvironment": "node",
