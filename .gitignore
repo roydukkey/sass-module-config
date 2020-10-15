@@ -10,3 +10,4 @@ npm-debug.log
 *.lock.json
 *-lock.json
 *.cache
+.jest

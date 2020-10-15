@@ -41,6 +41,9 @@
 		"test": "jest"
 	},
 	"jest": {
-		"testEnvironment": "node"
+		"testEnvironment": "node",
+		"verbose": true,
+		"coverageDirectory": ".jest/coverage",
+		"cacheDirectory": ".jest/cache"
 	}
 }
